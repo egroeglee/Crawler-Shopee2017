@@ -1,14 +1,12 @@
 # Crawler-Shopee2017
     
-    參考資料https://www.youtube.com/watch?v=jV6eHoLzD2
-    蝦皮的抓取方法必須先找到放在XHR 的請求連結，接下來必須連同json 格式的參數
-    一同透過POST做傳輸，方能送出正確的請求出去。但是如果今天發出請求後，如何都
-    拿不到正確回應時，便要思考是不是有少帶哪些標頭(Headers)資訊，此時只要一一
-    嘗試，總會找到一個正確的組合取得商品資訊。當然，有些標頭資訊是很難以取得的
-    ，此時再搭配Selenium 取得正確Cookie，任何難解的網站都可以迎刃而解!
+    抓取方法: 原本找到XHR的連結，連同json的參數透過POST做傳輸，才可送出正確的請求出去。
+    但如果今天發出請求後，無論如何都得不到回應時，應該是少了某些(Headers)，此時要一個一個
+    的把HEADERS都加入來嘗試，直到找到正確的組合並取得商品資訊。
+    某些HEADER無法直接用網頁的明細內找到，所以需要搭配Selenium 取得正確Cookie即可!
 
-
-1. 首先我想要搜尋的是二手電腦，因為金費不夠買新的XD
+動作:
+1. 首先我想要搜尋的是二手電腦，因為"金"費不夠買新的XD
 2. 搜尋後點選F12並選擇XHR-->PREVIEW-->ITEM 確定相關的資料確實存在這裡
 3. 再點選Headers看到一個POST的連結，複製連結貼上PYTHON
 4. 但又發現資料卻是JASON的型態，所以點選VIEW SOURCE把資料複製在PYTHON貼上
@@ -19,3 +17,8 @@
 9. 找出來後
 10. headers ={agent,cookie,token,referer}
 11. 確定可以取得資訊
+12. 輸入res.json()可以得到資料，代表沒問題
+13. 利用Selenium來抓取cookie and token 成為參數 ck & tok
+14. 再把參數加入headers
+15. 此時資料應該就可以抓取到了
+16. 可以利用Pandas把資料分配的比較方便查看
